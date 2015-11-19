@@ -1,3 +1,13 @@
+//
+// Copyright (c) 2000-2014, Amir Nathoo <amir.nth@gmail.com>
+// All rights reserved.
+//--------------------------------------------------------------------------------------------------------------
+//
+// RobotX.ino
+// Description: Processing serial commands received from the robot's main board.
+//--------------------------------------------------------------------------------------------------------------
+
+
 #include <SerialCommand.h>
 #include <DistanceGP2Y0A21YK.h>
 #include <Servo.h>
