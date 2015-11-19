@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2000-2014, Amir Nathoo <amir.nth@gmail.com>
+// Copyright (c) 2012-2015, Amir Nathoo <amir.nth@gmail.com>
 // All rights reserved.
 //--------------------------------------------------------------------------------------------------------------
 //
