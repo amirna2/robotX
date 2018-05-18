@@ -18,7 +18,6 @@ Servo  servo1;          // Servo motor object
 
 
 void setup() {
-
   delay(2000); // Not sure the delays are needed here. But I don't want to touch it :)
   Serial.begin(115200);
   delay(2000);
@@ -49,8 +48,7 @@ void loop() {
 }
 
 
-void servoMove()
-{
+void servoMove() {
   char *arg;
   int opt;
   int i;
@@ -64,35 +62,34 @@ void servoMove()
   //Serial.print("Moving from ");
   //Serial.println(current_pos);
 
-  if (opt == 1) 
-  { 
-    for(i = current_pos; i < 180; i += 1)  // goes from 0 degrees to 180 degrees 
-    {                                  // in steps of 1 degree 
-      servo1.write(i);               // tell servo to go to position in variable 'pos' 
-      delay(15);                       // waits 15ms for the servo to reach the position 
+  //TODO: Make these into Move commands like MoveLeft, MoveRight, etc...
+  if (opt == 1) { 
+    // goes from 0 degrees to 180 degrees in steps of 1 degree
+    // to tell servo to go to position in variable 'pos'
+    for(i = current_pos; i < 180; i += 1) {                                  
+      servo1.write(i);               
+      delay(15);
     } 
-  }
-  else if(opt == 2)
-  {
-    for(i = current_pos; i>=1; i-=1)     // goes from 180 degrees to 0 degrees 
-    {                                
-      servo1.write(i);              // tell servo to go to position in variable 'pos' 
-      delay(15);                       // waits 15ms for the servo to reach the position 
+  } else if(opt == 2) {
+    // goes from 180 degrees to 0 degrees
+    // to tell servo to go to position in variable 'pos' 
+    for(i = current_pos; i>=1; i-=1) {                                
+      servo1.write(i);              
+      delay(15);
     }    
   } 
 }
 
-void servoStop()
-{
+void servoStop() {
   servo1.write(servo1.read());
 }
-void servoGetPosition()
-{
+
+void servoGetPosition() {
   int i = servo1.read();
   Serial.println(i); 
 }
-void getIRDistance()
-{
+
+void getIRDistance() {
   DistanceGP2Y0A21YK Dist;
   int distance;
 
@@ -101,24 +98,21 @@ void getIRDistance()
   distance = Dist.getDistanceCentimeter();
   //Serial.print("Distance:");
   Serial.println(distance);
-
 }
-void sayHello() {
+
+void sayHello()  {
   char *arg;
   arg = sCmd.next();    // Get the next argument from the SerialCommand object buffer
-  if (arg != NULL) 
-  { 
+  if (arg != NULL) { 
     Serial.write("I say Hello ");
     Serial.write( arg );
     Serial.write('\n');    
-  }
-  else {
+  } else {
     Serial.println("Hello, whoever you are\n");
   }
 }
-
-
-void processCommand() {
+void processCommand() 
+{
   int aNumber;
   char *arg;
 
@@ -128,8 +122,7 @@ void processCommand() {
     aNumber = atoi(arg);    // Converts a char string to an integer
     Serial.print("First argument was: ");
     Serial.println(aNumber);
-  }
-  else {
+  } else {
     Serial.println("No arguments");
   }
 
@@ -148,4 +141,3 @@ void processCommand() {
 void unrecognized(const char *command) {
   Serial.println("What?");
 }
-
